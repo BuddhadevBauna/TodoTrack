@@ -3,6 +3,10 @@ import Todo from "../models/Todo.js";
 import mongoose from "mongoose";
 
 const getTodods = asyncHandler(async (req, res, next) => {
+    // console.log(req.user);
+    // console.log(req.user._id);
+    // console.log(req.user._id.toString());
+    // console.log(req.user.id);
     const todos = await Todo.find({ user: req.user.id });
     if (todos) {
         res.success(200, todos);
