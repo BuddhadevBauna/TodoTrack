@@ -44,11 +44,11 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (token !== null) fetchUser();
-    }, [token]);
+    }, [token, fetchUser]);
 
     const logout = () => {
         try {
-            setToken("");
+            setToken(null);
             setLoggedIn(false);
             setUser({});
             localStorage.removeItem('authToken');

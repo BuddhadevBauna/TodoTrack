@@ -45,9 +45,7 @@ const TodoList = () => {
         fetchTodos();
     }, []);
 
-    let filteredTodos = isLoggedIn
-        ? todos?.filter((todo) => todo.user === user._id) // Adjusting filter logic
-        : todos;
+    let filteredTodos = isLoggedIn ? todos?.filter((todo) => todo.user === user._id) : todos;
 
     return (
         <div className="max-w-md mx-auto mt-10">
@@ -74,7 +72,7 @@ const TodoList = () => {
                     </i>
                 </button>
             </form>
-            <div>
+            <div className='mb-16'>
                 {filteredTodos.length > 0 ? (
                     filteredTodos.map((todo) => (
                         <TodoItem key={todo._id} todo={todo} onDelete={handleDelete} />

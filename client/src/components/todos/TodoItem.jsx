@@ -1,11 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const TodoItem = ({ todo, onDelete }) => {
     // console.log(todo);
     const date = new Date(todo.updatedAt);
     const formattedDate = date.toLocaleDateString();
     const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const navigate = useNavigate();
+
+    const handleUpdate = () => {
+        if (!isLoggedIn) {
+            toast.error("Please log in");
+        } else {
+            navigate(`/${todo._id}`);
+        }
+    };
 
     return (
         <div
@@ -22,8 +32,9 @@ const TodoItem = ({ todo, onDelete }) => {
             <div className="flex flex-col gap-2">
                 <button
                     className="bg-yellow-300 text-white text-sm px-3 py-1 rounded-md font-bold"
+                    onClick={handleUpdate}
                 >
-                    <Link to={`/${todo._id}`}>Update</Link>
+                    Update
                 </button>
                 <button
                     className="bg-yellow-300 text-white text-sm px-3 py-1 rounded-md font-bold"
