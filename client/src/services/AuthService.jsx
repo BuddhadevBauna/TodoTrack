@@ -1,9 +1,11 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
+const baseURL = import.meta.env.VITE_API_BASE_URL;
+
 const registerUser = async (userData) => {
     try {
-        const response = await axios.post('http://localhost:8000/api/auth/register', userData);
+        const response = await axios.post(`${baseURL}/auth/register`, userData);
         return response;
     } catch (error) {
         // console.log(error);
@@ -13,7 +15,7 @@ const registerUser = async (userData) => {
 
 const loginUser = async (userData) => {
     try {
-        const response = await axios.post('http://localhost:8000/api/auth/login', userData);
+        const response = await axios.post(`${baseURL}/auth/login`, userData);
         return response;
     } catch (error) {
         // console.log(error);
@@ -23,7 +25,7 @@ const loginUser = async (userData) => {
 
 const getCurrentUser = async (AuthorizationToken) => {
     try {
-        const response = await axios.get('http://localhost:8000/api/user', {
+        const response = await axios.get(`${baseURL}/user`, {
             headers: {
                 Authorization: AuthorizationToken
             }

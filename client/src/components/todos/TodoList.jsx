@@ -18,10 +18,11 @@ const TodoList = () => {
         e.preventDefault();
         // console.log(newTodo);
         const response = await createTodo(newTodo, token);
-        // console.log(response);
+        console.log(response);
         if (response) {
             toast.success(response.message);
-            setTodos((prevTodo) => [...prevTodo, response.extraData]);
+            const addedTodo = { ...response.extraData, user: { _id: user?._id, name: user?.name } };
+            setTodos((prevTodo) => [...prevTodo, addedTodo]);
             setNewTodo({
                 text: "",
             });
@@ -32,7 +33,7 @@ const TodoList = () => {
         const response = await deleteTodo(id, token);
         if (response) {
             toast.success(response.message);
-            setTodos((prevTodos) => prevTodos.filter(todo => todo._id !== id));
+            setTodos((prevTodos) => prevTodos.filter(todo => todo?._id !== id));
         }
     };
 
@@ -40,12 +41,16 @@ const TodoList = () => {
         const fetchTodos = async () => {
             const response = await getTodos();
             // console.log(response);
-            setTodos(response.extraData);
+            setTodos(response?.extraData);
         };
         fetchTodos();
     }, []);
 
-    let filteredTodos = isLoggedIn ? todos?.filter((todo) => todo.user === user._id) : todos;
+    let filteredTodos = isLoggedIn
+        ?
+        todos?.filter((todo) => todo?.user?._id === user?._id)
+        :
+        todos;
 
     return (
         <div className="max-w-md mx-auto mt-10">

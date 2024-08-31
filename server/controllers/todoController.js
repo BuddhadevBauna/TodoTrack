@@ -3,7 +3,7 @@ import Todo from "../models/Todo.js";
 import mongoose from "mongoose";
 
 const getTodos = asyncHandler(async (req, res, next) => {
-    const todos = await Todo.find({});
+    const todos = await Todo.find({}).populate('user', 'name');
     
     if (todos) {
         res.success(200, todos);
