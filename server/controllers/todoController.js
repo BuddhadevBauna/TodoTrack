@@ -7,7 +7,13 @@ const getTodods = asyncHandler(async (req, res, next) => {
     // console.log(req.user._id);
     // console.log(req.user._id.toString());
     // console.log(req.user.id);
-    const todos = await Todo.find({ user: req.user.id });
+    let todos;
+    if(req?.user?.id) {
+        todos = await Todo.find({ user: req.user.id });
+    } else {
+        todos = await Todo.find({});
+    }
+    
     if (todos) {
         res.success(200, todos);
     } else {
