@@ -10,7 +10,6 @@ router.route('/')
 
 // Private
 router.route('/')
-    .get(authMiddleware, todoController.getTodods)
     .post(authMiddleware, todoController.createTodo);
 
 // Private

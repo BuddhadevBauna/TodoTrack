@@ -3,16 +3,7 @@ import Todo from "../models/Todo.js";
 import mongoose from "mongoose";
 
 const getTodods = asyncHandler(async (req, res, next) => {
-    // console.log(req.user);
-    // console.log(req.user._id);
-    // console.log(req.user._id.toString());
-    // console.log(req.user.id);
-    let todos;
-    if(req?.user?.id) {
-        todos = await Todo.find({ user: req.user.id });
-    } else {
-        todos = await Todo.find({});
-    }
+    const todos = await Todo.find({});
     
     if (todos) {
         res.success(200, todos);
@@ -24,6 +15,10 @@ const getTodods = asyncHandler(async (req, res, next) => {
 });
 
 const createTodo = asyncHandler(async (req, res, next) => {
+    // console.log(req.user);
+    // console.log(req.user._id);
+    // console.log(req.user._id.toString());
+    // console.log(req.user.id);
     const { text } = req.body;
     if (!text) {
         const error = new Error('Text is required.');
