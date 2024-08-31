@@ -53,7 +53,7 @@ const TodoList = () => {
         todos;
 
     return (
-        <div className="max-w-md mx-auto mt-10">
+        <div className="max-w-md mx-auto mt-16">
             <h1 className="text-2xl text-blue-700 font-bold text-center mb-4">
                 Todo List
             </h1>

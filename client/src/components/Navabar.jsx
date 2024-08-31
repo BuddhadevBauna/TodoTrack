@@ -7,7 +7,7 @@ const Navbar = () => {
     
     return (
         <>
-            <nav className='flex items-center justify-between bg-blue-400 text-blue-50 font-medium pl-[7%] pr-[7%] pt-4 pb-4 cursor-context-menu'>
+            <nav className='flex items-center justify-between bg-blue-400 text-blue-50 font-medium pl-[7%] pr-[7%] pt-4 pb-4 cursor-context-menu fixed top-0 left-0 right-0 z-10'>
                 <div>
                     <p className='text-white'>TodoTrack</p>
                 </div>

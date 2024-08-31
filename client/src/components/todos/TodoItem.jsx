@@ -23,7 +23,7 @@ const TodoItem = ({ todo, onDelete }) => {
     return (
         <div
             key={todo._id}
-            className="flex justify-between items-center bg-white p-5 rounded-md mt-5"
+            className="flex justify-between items-center bg-white p-5 rounded-md mt-3"
         >
             <div className="flex flex-col gap-3">
                 {!isLoggedIn &&
