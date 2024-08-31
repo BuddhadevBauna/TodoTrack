@@ -3,7 +3,7 @@ const successMiddleware = (req, res, next) => {
         res.status(statusCode).json({
             success: true,
             message: message,
-            data: data,
+            extraData: data,
         });
     };
     next();

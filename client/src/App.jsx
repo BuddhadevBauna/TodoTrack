@@ -8,6 +8,7 @@ import TodoUpdate from "./components/todos/TodoUpdate";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import Logout from "./auth/Logout";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   const router = createBrowserRouter([

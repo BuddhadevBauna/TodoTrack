@@ -1,22 +1,25 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
-    let isLogin = true;
+    const {isLoggedIn, userName} = useAuth();
+    // console.log(isLoggedIn, userName);
+    
     return (
         <>
-            <nav className='flex align-middle justify-between bg-blue-400 text-white font-medium pl-[7%] pr-[7%] pt-4 pb-4'>
+            <nav className='flex items-center justify-between bg-blue-400 text-blue-50 font-medium pl-[7%] pr-[7%] pt-4 pb-4 cursor-context-menu'>
                 <div>
-                    <p>TodoTrack</p>
+                    <p className='text-white'>TodoTrack</p>
                 </div>
-                {isLogin ? (
+                {isLoggedIn ? (
                     <div className='flex align-middle gap-3'>
-                        <p>username</p>
-                        <Link to='/logout'>Logout</Link>
+                        <p className='text-white'>{userName?.split(' ').join('')}</p>
+                        <Link to='/logout' className='hover:text-white'>Logout</Link>
                     </div>
                 ) : (
-                    <div>
-                        <Link to="/login">Login</Link>
-                        <Link to="/register">Register</Link>
+                    <div className='flex align-middle gap-3'>
+                        <Link to="/login" className='hover:text-white'>Login</Link>
+                        <Link to="/register" className='hover:text-white'>Register</Link>
                     </div>
                 )}
             </nav>

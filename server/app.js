@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from "express";
 import connectDB from './config/db.js';
+import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import errorMiddleware from './middlewares/errorMiddleware.js';
 import todoRoutes from './routes/todoRoutes.js';
@@ -12,6 +13,13 @@ connectDB();
 
 // Create express app
 const app = express();
+
+// Use CORS middleware
+app.use(cors({
+    origin: 'http://localhost:5173', // Replace with the origin of your frontend
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Allowed HTTP methods
+   allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
+}));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
