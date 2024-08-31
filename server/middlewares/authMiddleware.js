@@ -24,7 +24,7 @@ const authMiddleware = async (req, res, next) => {
         return next();
     } catch (error) {
         // console.log(error);
-        const err = new Error("Unauthorized, Invalid token");
+        const err = new Error("Please Login");
         err.status = 401;
         return next(err);
     }

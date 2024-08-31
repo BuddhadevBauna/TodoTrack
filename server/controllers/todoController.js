@@ -2,7 +2,7 @@ import asyncHandler from "express-async-handler";
 import Todo from "../models/Todo.js";
 import mongoose from "mongoose";
 
-const getTodods = asyncHandler(async (req, res, next) => {
+const getTodos = asyncHandler(async (req, res, next) => {
     const todos = await Todo.find({});
     
     if (todos) {
@@ -71,7 +71,7 @@ const updateTodo = asyncHandler(async (req, res, next) => {
     todo.text = text || todo.text;
     try {
         const updatedTodo = await todo.save();
-        res.success(200, updatedTodo, 'Todo updated successfully');
+        res.success(200, updatedTodo, 'Todo item updated successfully');
     } catch (error) {
         // console.error('Error updating todo:', error);
         const err = new Error('Server error: Could not update todo.');
@@ -106,7 +106,7 @@ const deleteTodo = asyncHandler(async (req, res, next) => {
     
     try {
         await Todo.deleteOne({_id: id});
-        res.success(202, null, 'Todo removed successfully');
+        res.success(202, null, 'Todo item removed successfully');
     } catch (err) {
         const error = new Error('Server error: Could not delete todo.');
         error.status = 500;
@@ -114,4 +114,4 @@ const deleteTodo = asyncHandler(async (req, res, next) => {
     }
 });
 
-export {getTodods, createTodo, updateTodo, deleteTodo};
+export {getTodos, createTodo, updateTodo, deleteTodo};

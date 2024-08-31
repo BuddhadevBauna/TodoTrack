@@ -6,7 +6,7 @@ const router = express.Router();
 
 // Public route to get all TODOs
 router.route('/')
-    .get(todoController.getTodods);
+    .get(todoController.getTodos);
 
 // Private
 router.route('/')

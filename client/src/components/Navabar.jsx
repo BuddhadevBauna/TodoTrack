@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
-    const {isLoggedIn, userName} = useAuth();
-    // console.log(isLoggedIn, userName);
+    const {isLoggedIn, user} = useAuth();
+    // console.log(isLoggedIn, user);
     
     return (
         <>
@@ -13,7 +13,7 @@ const Navbar = () => {
                 </div>
                 {isLoggedIn ? (
                     <div className='flex align-middle gap-3'>
-                        <p className='text-white'>{userName?.split(' ').join('')}</p>
+                        <p className='text-white'>{user?.name?.split(' ').join('')}</p>
                         <Link to='/logout' className='hover:text-white'>Logout</Link>
                     </div>
                 ) : (

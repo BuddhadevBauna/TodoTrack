@@ -8,7 +8,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem('authToken'));
     const [isLoggedIn, setLoggedIn] = useState(!!token);
-    const [userName, setUserName] = useState("");
+    const [user, setUser] = useState({});
 
     const register = async (userData) => {
         const response = await registerUser(userData);
@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
         const response = await getCurrentUser(AuthorizationToken);
         // console.log(response);
         setLoggedIn(true);
-        setUserName(response?.data?.extraData?.name);
+        setUser(response?.data?.extraData);
     }, [token]);
 
     useEffect(() => {
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
         try {
             setToken("");
             setLoggedIn(false);
-            setUserName("");
+            setUser({});
             localStorage.removeItem('authToken');
         } catch (error) {
             console.log(error);
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ register, login, logout, isLoggedIn, userName }}>
+            value={{ register, login, logout, isLoggedIn, user, token }}>
             {children}
         </AuthContext.Provider>
     )
