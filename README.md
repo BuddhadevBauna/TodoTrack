@@ -48,8 +48,8 @@ The To-Do List Application is a full-stack web application designed for efficien
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/BuddhadevBauna/TodoTrack.git
-   cd TodoTrack
+     git clone https://github.com/BuddhadevBauna/TodoTrack.git
+     cd TodoTrack
    ```
 
 
