@@ -85,5 +85,5 @@ The To-Do List Application is a full-stack web application designed for efficien
 - **Backend:**
 ```bash
   cd ../server
-  npm run dev
+  node server.js
 ```
